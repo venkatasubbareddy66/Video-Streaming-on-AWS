@@ -1,0 +1,66 @@
+Build a Video Streaming Service like YouTube, Netflix using AWS S3, CloudFront and React
+
+Step 1 : Create a Bucket 
+
+-- open console --> S3 --> create bucket with version enable and default encryption also enabled
+
+
+Step 2 : open CloudFront and Create Distribution 
+
+-- CloudFront --> Origin Access --> create control settings (name = Anyone, sign request recommended)
+
+-- go to Distribution --> choose origin domain of urs --> Origin access = Origin access control settings (recommended), select ur OAC--> Viewer protocol policy = Redirect HTTP to HTTPS--> create Distribution
+
+-- it will take some time to Distribution , copy the S3 bucket policy which shows u in the top 
+
+-- change bucket Policy and save changes 
+
+-- wait until the Distribution last modified is updated , until then do not proceed 
+
+-- go to S3 bucket and upload any Video
+
+
+Step 3 : Test
+
+-- now copy domain name of ur distribution/copy ur bukcet object key paste in browser 
+
+eg : https://dm0eedkwuteru.cloudfront.net/big_buck_bunny_720p_1mb.mp4
+
+-- now cloudfront and s3 connection is working for the Videostreaming purpose 
+
+
+Step 4 : do try with the front-end (React) to deliver our content to customers 
+
+-- open vscode 
+
+-- npx create-react-app video-streaming-service     ---> enter this command to install all packages 
+
+-- cd video-streaming-service 
+
+-- npm start
+
+-- it will created successfully 
+
+-- delete the things that we do not need in the folder 
+
+-- delete package.lock.json , in src --> delete logo.svg,report,etuptes , do delete if u do not want some files 
+
+-- open App.js --> add some simple text 
+
+
+ <h2>This is video tutorial practice on AWS</h2>
+      <video width="700px" height="400px" controls> </video>
+      <source src="https://dm0eedkwuteru.cloudfront.net/big_buck_bunny_720p_1mb.mp4" type="video/mp4" />
+
+
+
+-- open App.css --> 
+
+.App{
+  text-align: center;
+}
+
+
+--  now do test 
+
+-- working fine 
